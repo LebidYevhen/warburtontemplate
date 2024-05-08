@@ -262,6 +262,8 @@ button {
   overflow: auto;
   background-color: rgba(10, 11, 13, 0.6);
   transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
 }
 .modal__open {
   opacity: 1;
@@ -278,7 +280,6 @@ button {
   margin: 0 auto;
   width: 100%;
   max-width: 32.5rem;
-  height: 100%;
   position: relative;
   transform: translateY(-100%);
   transition: transform 0.3s;
