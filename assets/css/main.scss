@@ -15,6 +15,10 @@ html {
 body {
   margin: 0;
   background-color: #DBDBDB;
+
+  &.modal-open {
+    overflow: hidden;
+  }
 }
 
 h1, h2, p {
@@ -40,7 +44,7 @@ button {
   border-width: 0;
 }
 
-.share__button {
+.share-modal-open {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
   transition-duration: .15s;
   color: #fff;
@@ -82,7 +86,7 @@ button {
   position: fixed;
   margin: 0.5rem auto;
   padding: 0.5rem 0.75rem;
-  z-index: 21;
+  z-index: 2;
 
   @media (min-width: 768px) {
     max-width: 36.5rem;
@@ -202,7 +206,7 @@ button {
   // .menu__item
   &__item {
     position: relative;
-    z-index: 0;
+    z-index: 1;
     overflow: hidden;
     transition: box-shadow 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, border-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, transform 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s, background-color 0.25s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
     margin-bottom: 1rem;
@@ -279,7 +283,7 @@ button {
   &__link {
     display: block;
     transition: transform 0s cubic-bezier(0.23, 1, 0.32, 1) 0s;
-    z-index: 0;
+    z-index: 1;
     fill: var(--accent-color);
     width: 2rem;
     height: 2rem;
@@ -291,4 +295,109 @@ button {
     }
   }
 }
+
+/*------------------------- Modal start -------------------------*/
+.modal {
+  opacity: 0;
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(10, 11, 13, 0.6);
+  transition: opacity .3s;
+
+  &__open {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 3;
+
+    .modal__content {
+      transform: translateY(0);
+    }
+  }
+
+  &__content {
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1.5rem 0.5rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 32.5rem;
+    height: 100%;
+    position: relative;
+    transform: translateY(-100%);
+    transition: transform .3s;
+  }
+
+  &__close {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover,
+    &:focus {
+      background-color: rgb(243, 243, 241);
+    }
+  }
+
+  .modal-content {
+
+    .content-top {
+        position: relative;
+        margin-bottom: 2.5rem;
+
+        &__title {
+          text-align: center;
+          font-weight: 600;
+        }
+    }
+
+    .content-bottom {
+
+    }
+  }
+
+  &__share {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: transparent;
+    transition: background-color 0.1s ease-in 0s;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    font-weight: 600;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #000;
+
+    &:hover {
+      background: rgb(243, 243, 241);
+    }
+
+    .share-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .share-arrow {
+      width: 1rem;
+      height: 1rem;
+      margin-left: auto;
+    }
+  }
+}
+
+/*------------------------- Modal end -------------------------*/
 
